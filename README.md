@@ -1,2 +1,0 @@
-# SmartPlantcareSystem
-coursework
