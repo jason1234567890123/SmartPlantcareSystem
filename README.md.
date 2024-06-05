@@ -1,0 +1,83 @@
+SMART PLANT CARE SYSTEM
+
+PROJECT DESCRIPTION
+The Smart Plant Care System is designed to monitor soil moisture levels and provide alerts when the soil is too dry.
+This system helps ensure that plants are properly watered, making it ideal for plant enthusiasts and home gardeners. 
+I came up with this idea recently for my mum's birthday to help her maintain her indoor plants without hassle.
+
+COMPONENETS
+- Arduino Uno
+- Soil moisture sensor
+- LED
+- 3-pin buzzer
+- 220Ω resistor for LED
+- Breadboard and jumper wires
+
+CIRCUIT DIAGRAM
+Since I primarily used Tinkercad for the design and simulation of this project, a physical diagram isn't included. However, the connections are as follows:
+- Soil Moisture Sensor:
+  - VCC to 5V rail
+  - GND to GND rail
+  - SIG to A0 on the Arduino
+- LED:
+  - Anode to digital pin 9 via a 220Ω resistor
+  - Cathode to GND
+- Buzzer:
+  - VCC to 5V rail
+  - GND to GND rail
+  - SIG to digital pin 10
+
+SETUP INSTRUCTIONS
+1. Assemble the Components:
+   - Connect the soil moisture sensor's VCC to 5V, GND to GND, and SIG to A0 on the Arduino.
+   - Connect the LED's anode to digital pin 9 via a 220Ω resistor and the cathode to GND.
+   - Connect the buzzer's VCC to 5V, GND to GND, and SIG to digital pin 10.
+2. Upload the Code:
+   - Use the Arduino IDE to upload the provided code to the Arduino Uno.
+
+CODE EXPLANATION
+```cpp
+int ledPin = 9;
+int sensorPin = A0;
+int buzzerPin = 10;
+int sensorValue = 0;
+int threshold = 500;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  sensorValue = analogRead(sensorPin);
+  Serial.print("Sensor Value: ");
+  Serial.println(sensorValue);
+
+  if (sensorValue >= threshold) {
+    digitalWrite(ledPin, HIGH);
+    tone(buzzerPin, 1000);
+    Serial.println("Soil is too dry. LED and Buzzer ON.");
+  } else {
+    digitalWrite(ledPin, LOW);
+    noTone(buzzerPin);
+    Serial.println("Soil moisture is sufficient. LED and Buzzer OFF.");
+  }
+  delay(1000);
+}
+The code reads the soil moisture level from the sensor. If the soil is too dry (sensor value >= threshold), it activates the LED and buzzer. Otherwise, it keeps them off.
+
+USAGE
+1. **Monitor Soil Moisture:**
+   - Insert the soil moisture sensor into the soil.
+   - The system will automatically alert you if the soil is too dry by lighting up the LED and sounding the buzzer.
+2. **Adjust as Needed:**
+   - You can adjust the threshold in the code to match your specific soil and plant needs.
+
+ADDITIONAL NOTES
+- This project was developed using Tinkercad for design and simulation.
+- It provides a practical solution for maintaining plant health, ensuring plants are watered properly.
+
+VIDEO DEMONSTRATION
+A video demonstration showcasing the Smart Plant Care System is available
+here(https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ccebc7fe-7e09-4c5b-850d-b18401888d7d
