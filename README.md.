@@ -68,10 +68,10 @@ void loop() {
 The code reads the soil moisture level from the sensor. If the soil is too dry (sensor value >= threshold), it activates the LED and buzzer. Otherwise, it keeps them off.
 
 USAGE
-1. **Monitor Soil Moisture:**
+1. Monitor Soil Moisture:
    - Insert the soil moisture sensor into the soil.
    - The system will automatically alert you if the soil is too dry by lighting up the LED and sounding the buzzer.
-2. **Adjust as Needed:**
+2. Adjust as Needed:
    - You can adjust the threshold in the code to match your specific soil and plant needs.
 
 ADDITIONAL NOTES
